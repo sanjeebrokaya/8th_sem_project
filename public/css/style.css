@@ -1965,9 +1965,10 @@ width:100%;
     animation: movebounce 2.9s linear infinite;
 }
 .x_car_offer_img img{
-	height: 200px;
+	height: auto;
     width: 100%;
-    object-fit: contain;
+	min-height: 200px;
+    /* object-fit: contain; */
 }
 .x_car_offer_price_inner{
 	margin-top:0px;

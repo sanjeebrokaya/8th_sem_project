@@ -91,7 +91,7 @@
 											@if($n !== '')
 												<div class="item">
 													<div class="lr_bc_slider_img_wrapper">
-														<img src="/storage/mechanics/{{$n}}" alt="fresh_food_img">
+														<img src="/storage/mechanics/{{$n}}" alt="mechanic_image">
 													</div>
 												</div>
 											@endif

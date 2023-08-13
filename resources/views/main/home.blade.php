@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Home</title>
+    <title>Bike Rental</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta name="author" content="Roshan" />
     <meta name="MobileOptimized" content="320" />
@@ -34,7 +34,7 @@
     <div class="x_top_header_wrapper float_left">
         <div class="container">
             <div class="x_top_header_left_side_wrapper float_left">
-                <p>Call Us :</p>
+                <p>Call Us: 9860234854</p>
             </div>
             <div class="x_top_header_right_side_wrapper float_left">
                 <div class="x_top_header_social_icon_wrapper">
