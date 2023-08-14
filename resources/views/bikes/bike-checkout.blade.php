@@ -153,8 +153,6 @@
                                     </div>
                                     <hr>
 
-
-
                                     <div class="x_car_acc_filter_bottom_total">
                                         <ul>
                                             <li>total <span>Rs {{ $booking->total }}</span>
@@ -184,7 +182,8 @@
                                                     <h4>Payment</h4>
                                                 </div>
                                                 <div class="radio">
-                                                    <input type="radio" name="ratio" id="poa" value="poa" checked="">
+                                                    <input type="radio" name="ratio" id="poa" value="poa"
+                                                        checked="">
                                                     <label for="poa">Payment on Arrival</label>
                                                 </div>
                                                 <div class="radio">
@@ -195,15 +194,16 @@
                                             <div class="col-md-12">
                                                 <div class="contect_btn contect_btn_contact">
                                                     <ul>
-                                                        <li><input class="btn btn-primary btn-lg btn-block"
-                                                                style="background-color: #4f5dec; color:#ffff" type="submit"
-                                                                name="submit" value="Confirm Renting" id="rentConfirm">
+                                                        <li>
+                                                            <input class="btn btn-primary btn-lg btn-block"
+                                                                style="background-color: #4f5dec; color:#ffff"
+                                                                type="submit" name="submit" value="Confirm Renting"
+                                                                id="rentConfirm" />
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </form>
-
 
                                     </div>
                                 </div>
@@ -219,21 +219,23 @@
         $("#pay").on('submit', function(e) {
             e.preventDefault();
             let formdata = $(this).serialize();
-            
+
 
             $.ajax({
-                url: "/bike/rent-done/{{$booking->id}}",
+                url: "/bike/rent-done/{{ $booking->id }}",
                 type: "POST",
                 dataType: 'JSON',
                 data: formdata,
-                
+
                 success: function(response) {
-                    if(response.method === 'khalti'){
+                    if (response.method === 'khalti') {
                         let checkout = new KhaltiCheckout(config);
                         console.log(response.amount);
-                        checkout.show({amount: response.amount});
+                        checkout.show({
+                            amount: response.amount
+                        });
                     }
-                    if(response.message === 'poa'){
+                    if (response.message === 'poa') {
                         window.location.href = response.link;
                     }
                 }
@@ -241,6 +243,4 @@
             })
         })
     </script>
-
-    
 @endsection
