@@ -10,11 +10,10 @@ use App\Models\ChatMessage;
 use App\Models\Mechanic;
 use App\Models\Review;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Intervention\Image\ImageManagerStatic;
+use Intervention\Image\ImageManager as Image;
 
 class AdminController extends Controller
 {
@@ -120,6 +119,14 @@ class AdminController extends Controller
 
             $f = $request->file('thumbnail');
 
+            // Define the desired directory path
+            $directoryPath = storage_path('app/public/bikes');
+
+            // Create the directory if it doesn't exist
+            if (!(File::isDirectory($directoryPath))) {
+                File::makeDirectory($directoryPath, $mode = 0777, true, true);
+            }
+
             $fname = $f->getClientOriginalName();
             $ext = pathinfo($fname, PATHINFO_EXTENSION);
             $name = pathinfo($fname, PATHINFO_FILENAME);
@@ -127,7 +134,7 @@ class AdminController extends Controller
             $newName = str_replace(' ', '-', $name) . time() . '.' . $ext;
             // $n = '/public/bikes/' . $newName;
             // return $n;
-            $img =  ImageManagerStatic::make($f);
+            $img =  (new Image())->make($f);
             $img->resize(190, 73);
             $img->save('storage/bikes/' . $newName);
             // $f->storeAs('/public/bikes', $newName);
