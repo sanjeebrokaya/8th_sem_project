@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-
     if (Auth::check()) {
         if (Auth::user()->user_type == 'user') {
             $bikes = Bike::all()->random(2);
@@ -38,9 +37,14 @@ Route::get('/', function () {
             return redirect()->route('mech.requested', ['mechanic' => $id]);
         }
     } else {
-        $bikes = Bike::all()->random(2);
-        $mechanics = Mechanic::all()->random(2);
-        return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
+        try {
+            $bikes = Bike::all()->random(2) ?? null;
+            $mechanics = Mechanic::all()->random(2) ?? null;
+
+            return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
+        } catch (Exception $e) {
+            return abort(404, $e->getMessage());
+        }
     }
 })->name('user.home');
 
@@ -79,70 +83,78 @@ Route::get('/admin', function () {
     return redirect()->route('admin.requested');
 })->name('admin.home');
 
-Route::get('/admin/bikes/requested', [AdminController::class, 'bikesRequested'])->middleware(['auth', 'is_admin'])->name('admin.requested');
-Route::get('/admin/bikes/booking/confirm/{booking:id}', [AdminController::class, 'confirmBooking'])->middleware(['auth', 'is_admin'])->name('admin.confirm');
-Route::get('/admin/bikes/booking/cancel/{booking:id}', [AdminController::class, 'cancelBooking'])->middleware(['auth', 'is_admin'])->name('admin.cancel');
-Route::get('/admin/bikes/confirmed', [AdminController::class, 'getConfirmed'])->middleware(['auth', 'is_admin'])->name('bikes.confirmed');
-Route::get('/admin/bikes/confirmed/undo/{booking:id}', [AdminController::class, 'undoConfirm'])->middleware(['auth', 'is_admin'])->name('bikes.undoConfirmed');
-Route::get('/admin/bikes/cancelled', [AdminController::class, 'getCancelled'])->middleware(['auth', 'is_admin'])->name('bikes.cancelled');
-Route::get('/admin/bikes/cancelled/undo/{booking:id}', [AdminController::class, 'undoCancel'])->middleware(['auth', 'is_admin'])->name('bikes.undoCancel');
-Route::get('/admin/bikes/bookings/all', [AdminController::class, 'allBookings'])->middleware(['auth', 'is_admin'])->name('admin.allBookings');
-Route::get('/admin/booking/delete/{booking:id}', [AdminController::class, 'deletebooking'])->middleware(['auth', 'is_admin'])->name('booking.delete');
+// Admin ['auth', 'is_admin'] middleware groups
+// Changed by Suman 👍
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'is_admin']], function () {
+    Route::get('bikes/requested', [AdminController::class, 'bikesRequested'])->name('admin.requested');
+    Route::get('bikes/booking/confirm/{booking:id}', [AdminController::class, 'confirmBooking'])->name('admin.confirm');
+    Route::get('bikes/booking/cancel/{booking:id}', [AdminController::class, 'cancelBooking'])->name('admin.cancel');
+    Route::get('bikes/confirmed', [AdminController::class, 'getConfirmed'])->name('bikes.confirmed');
+    Route::get('bikes/confirmed/undo/{booking:id}', [AdminController::class, 'undoConfirm'])->name('bikes.undoConfirmed');
+    Route::get('bikes/cancelled', [AdminController::class, 'getCancelled'])->name('bikes.cancelled');
+    Route::get('bikes/cancelled/undo/{booking:id}', [AdminController::class, 'undoCancel'])->name('bikes.undoCancel');
+    Route::get('bikes/bookings/all', [AdminController::class, 'allBookings'])->name('admin.allBookings');
+    Route::get('booking/delete/{booking:id}', [AdminController::class, 'deletebooking'])->name('booking.delete');
 
-Route::get('/admin/bikes', [AdminController::class, 'bikes'])->middleware(['auth', 'is_admin'])->name('admin.bikes');
-Route::get('/admin/bikes/add', [AdminController::class, 'bikeAddForm'])->middleware(['auth', 'is_admin'])->name('admin.addBike');
+    Route::get('bikes', [AdminController::class, 'bikes'])->name('admin.bikes');
+    Route::get('bikes/add', [AdminController::class, 'bikeAddForm'])->name('admin.addBike');
 
-// Route::get('/image', function() {
+    // Route::get('/image', function() {
 
-//     $img =  ImageManagerStatic::make('bc2.jpg')->resize(190, 73);
-//     return $img->response('png');
-// });
+    //     $img =  ImageManagerStatic::make('bc2.jpg')->resize(190, 73);
+    //     return $img->response('png');
+    // });
 
-// Route::post('/admin/bikes/drop', [AdminController::class, 'bikesDrop'])->name('drop.bikes');
-Route::post('/admin/bikes/store', [AdminController::class, 'storebike'])->middleware(['auth', 'is_admin'])->name('admin.storebike');
-Route::get('/admin/bike/update/{bike:id}', [AdminController::class, 'getSingleBike'])->middleware(['auth', 'is_admin'])->name('admin.getSingleBike');
-Route::post('/admin/bike/update/{bike:id}', [AdminController::class, 'updateBike'])->middleware(['auth', 'is_admin'])->name('admin.updateBike');
-Route::get('/admin/bike/remove/{bike:id}', [AdminController::class, 'removeBike'])->middleware(['auth', 'is_admin'])->name('admin.removeBike');
+    // Route::post('bikes/drop', [AdminController::class, 'bikesDrop'])->name('drop.bikes');
+    Route::post('bikes/store', [AdminController::class, 'storebike'])->name('admin.storebike');
+    Route::get('bike/update/{bike:id}', [AdminController::class, 'getSingleBike'])->name('admin.getSingleBike');
+    Route::post('bike/update/{bike:id}', [AdminController::class, 'updateBike'])->name('admin.updateBike');
+    Route::get('bike/remove/{bike:id}', [AdminController::class, 'removeBike'])->name('admin.removeBike');
 
-//for brands
-Route::get('/admin/brands', [AdminController::class, 'getBrands'])->middleware(['auth', 'is_admin'])->name('admin.allBrands');
-Route::get('/admin/brand/add', [AdminController::class, 'addBrand'])->middleware(['auth', 'is_admin'])->name('admin.addBrand');
-Route::post('/admin/brand/store', [AdminController::class, 'storeBrand'])->middleware(['auth', 'is_admin'])->name('admin.storeBrand');
-Route::get('/admin/brand/update/{brand:id}', [AdminController::class, 'getSingleBrand'])->middleware(['auth', 'is_admin'])->name('admin.singleBrand');
-Route::post('/admin/brand/update/{brand:id}', [AdminController::class, 'updateBrand'])->middleware(['auth', 'is_admin'])->name('admin.updateBrand');
-Route::get('/admin/brand/remove/{brand:id}', [AdminController::class, 'removeBrand'])->middleware(['auth', 'is_admin'])->name('admin.removeBrand');
+    //for brands
+    Route::get('brands', [AdminController::class, 'getBrands'])->name('admin.allBrands');
+    Route::get('brand/add', [AdminController::class, 'addBrand'])->name('admin.addBrand');
+    Route::post('brand/store', [AdminController::class, 'storeBrand'])->name('admin.storeBrand');
+    Route::get('brand/update/{brand:id}', [AdminController::class, 'getSingleBrand'])->name('admin.singleBrand');
+    Route::post('brand/update/{brand:id}', [AdminController::class, 'updateBrand'])->name('admin.updateBrand');
+    Route::get('brand/remove/{brand:id}', [AdminController::class, 'removeBrand'])->name('admin.removeBrand');
 
-//for reviews
-Route::get('/admin/reviews', [AdminController::class, 'getReviews'])->middleware(['auth', 'is_admin'])->name('admin.allReviews');
-Route::get('/admin/review/remove/{review:id}', [AdminController::class, 'removeReview'])->middleware(['auth', 'is_admin'])->name('admin.removeReview');
+    //for reviews
+    Route::get('reviews', [AdminController::class, 'getReviews'])->name('admin.allReviews');
+    Route::get('review/remove/{review:id}', [AdminController::class, 'removeReview'])->name('admin.removeReview');
 
-//for users
-Route::get('/admin/users', [AdminController::class, 'getUsers'])->middleware(['auth', 'is_admin'])->name('admin.allUsers');
-Route::get('/admin/user/remove/{user:id}', [AdminController::class, 'removeUser'])->middleware(['auth', 'is_admin'])->name('admin.removeUser');
+    //for users
+    Route::get('users', [AdminController::class, 'getUsers'])->name('admin.allUsers');
+    Route::get('user/remove/{user:id}', [AdminController::class, 'removeUser'])->name('admin.removeUser');
 
-//for mechanics
-Route::get('/admin/mechanics', [AdminController::class, 'getMechanics'])->middleware(['auth', 'is_admin'])->name('admin.allMech');
-Route::get('/admin/mechanic/add', [AdminController::class, 'addMechanic'])->middleware(['auth', 'is_admin'])->name('admin.addMech');
-Route::post('/admin/mechanic/store', [AdminController::class, 'storeMechanic'])->middleware(['auth', 'is_admin'])->name('admin.storeMech');
-Route::get('/admin/mechanic/update/{mechanic:id}', [AdminController::class, 'getSingleMechanic'])->middleware(['auth', 'is_admin'])->name('admin.singleMech');
-Route::post('/admin/mechanic/update/{mechanic:id}', [AdminController::class, 'updateMechanic'])->middleware(['auth', 'is_admin'])->name('admin.updateMech');
-Route::get('/admin/mechanic/remove/{mechanic:id}', [AdminController::class, 'removeMechanic'])->middleware(['auth', 'is_admin'])->name('admin.removeMech');
+    //for mechanics
+    Route::get('mechanics', [AdminController::class, 'getMechanics'])->name('admin.allMech');
+    Route::get('mechanic/add', [AdminController::class, 'addMechanic'])->name('admin.addMech');
+    Route::post('mechanic/store', [AdminController::class, 'storeMechanic'])->name('admin.storeMech');
+    Route::get('mechanic/update/{mechanic:id}', [AdminController::class, 'getSingleMechanic'])->name('admin.singleMech');
+    Route::post('mechanic/update/{mechanic:id}', [AdminController::class, 'updateMechanic'])->name('admin.updateMech');
+    Route::get('mechanic/remove/{mechanic:id}', [AdminController::class, 'removeMechanic'])->name('admin.removeMech');
+});
 
 //Mechanic's Appointment
-Route::get('/mechanic/appointment/requested/{mechanic:id}', [MechanicController::class, 'requested'])->name('mech.requested');
-Route::get('/mechanic/appointment/confirm/{appointment:id}', [MechanicController::class, 'confirm'])->name('mech.confirm');
-Route::get('/mechanic/appointment/cancel/{appointment:id}', [MechanicController::class, 'cancel'])->name('mech.cancel');
+Route::group(['prefix' => 'mechanic'], function () {
+    Route::group(['prefix' => 'appointment'], function () {
+        Route::get('requested/{mechanic:id}', [MechanicController::class, 'requested'])->name('mech.requested');
+        Route::get('confirm/{appointment:id}', [MechanicController::class, 'confirm'])->name('mech.confirm');
+        Route::get('cancel/{appointment:id}', [MechanicController::class, 'cancel'])->name('mech.cancel');
 
-Route::get('/mechanic/appointment/confirmed/{mechanic:id}', [MechanicController::class, 'getConfirmed'])->name('mech.getConfirmed');
-Route::get('/mechanic/appointment/confirmed/undo/{appointment:id}', [MechanicController::class, 'undoConfirmed'])->name('mech.undoConfirmed');
+        Route::get('confirmed/{mechanic:id}', [MechanicController::class, 'getConfirmed'])->name('mech.getConfirmed');
+        Route::get('confirmed/undo/{appointment:id}', [MechanicController::class, 'undoConfirmed'])->name('mech.undoConfirmed');
 
-Route::get('/mechanic/appointment/cancelled/{mechanic:id}', [MechanicController::class, 'gettCancelled'])->name('mech.getCancelled');
-Route::get('/mechanic/appointment/cancelled/undo/{appointment:id}', [MechanicController::class, 'undoCancel'])->name('mech.undoCancel');
+        Route::get('cancelled/{mechanic:id}', [MechanicController::class, 'gettCancelled'])->name('mech.getCancelled');
+        Route::get('cancelled/undo/{appointment:id}', [MechanicController::class, 'undoCancel'])->name('mech.undoCancel');
 
-Route::get('/mechanic/appointment/all/{mechanic:id}', [MechanicController::class, 'getAll'])->name('mech.getAll');
-Route::get('/mechanic/appointent/remove/{appointment:id}', [MechanicController::class, 'remove'])->name('mech.remove');
+        Route::get('all/{mechanic:id}', [MechanicController::class, 'getAll'])->name('mech.getAll');
+        Route::get('remove/{appointment:id}', [MechanicController::class, 'remove'])->name('mech.remove');
+    });
 
-Route::get('/mechanic/chat', [MechanicController::class, 'mechMessages'])->name('mech.messages');
+    Route::get('chat', [MechanicController::class, 'mechMessages'])->name('mech.messages');
+});
 
 Route::get('/user/chat', function () {
     return view('main.user-chat');

@@ -35,15 +35,15 @@ class BikeRentController extends Controller
         $brands = Brand::all();
         $all = Bike::all()->count();
 
-        return view('bikes.bikes-all', ['bikes' => $bikes, 'brands' => $brands, 'count' => $count, 'all'=>$all]);
+        return view('bikes.bikes-all', ['bikes' => $bikes, 'brands' => $brands, 'count' => $count, 'all' => $all]);
     }
 
     function bikeSingle(Bike $bike)
     {
         $reviews = Review::where('bike_id', '=', $bike->id)->get();
-        $latestBikes = Bike::where('id','!=',$bike->id)->limit(3)->get();
-        
-        return view('bikes.bike-single', ['bike' => $bike, 'reviews' => $reviews,'latestBikes'=>$latestBikes]);
+        $latestBikes = Bike::where('id', '!=', $bike->id)->limit(3)->get();
+
+        return view('bikes.bike-single', ['bike' => $bike, 'reviews' => $reviews, 'latestBikes' => $latestBikes]);
     }
 
     function rentNow(Bike $bike, Request $request)
@@ -335,7 +335,6 @@ class BikeRentController extends Controller
         if ($request->has('name')) {
             if ($request->name !== $user->name) {
                 User::where('id', '=', $user->id)->update(['name' => $request->name]);
-                
             }
         }
 
@@ -347,7 +346,6 @@ class BikeRentController extends Controller
                 }
             }
             User::where('id', '=', $user->id)->update(['email' => $request->email]);
-            
         }
 
         if ($request->has('license')) {
@@ -355,23 +353,21 @@ class BikeRentController extends Controller
                 if (in_array($request->license, $lArr)) {
                     return response()->json(['status' => 'fail', 'message' => 'invalid license']);
                 }
-                
             }
             User::where('id', '=', $user->id)->update(['license' => $request->license]);
-            
         }
 
         if ($request->has('phone')) {
             if ($request->phone != $user->phone) {
                 User::where('id', '=', $user->id)->update(['phone' => $request->phone]);
-                
             }
         }
 
-        return response()->json(['status' => 'success', 'message'=>'updated successfully']);
+        return response()->json(['status' => 'success', 'message' => 'updated successfully']);
     }
 
-    function aboutUs(){
+    function aboutUs()
+    {
         return view('main.about-us');
     }
 }

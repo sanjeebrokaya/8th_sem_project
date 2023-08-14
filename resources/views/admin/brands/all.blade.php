@@ -10,13 +10,16 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="/layout/assets/images/favicon.ico">
 
-    <link href="/layout/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="/layout/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="/layout/assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="/layout/assets/libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
+        type="text/css" />
 
     <!-- App css -->
     <link href="/layout/assets/css/config/purple/bootstrap.min.css" rel="stylesheet" type="text/css"
         id="bs-default-stylesheet" />
-    <link href="/layout/assets/css/config/purple/app.min.css" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+    <link href="/layout/assets/css/config/purple/app.min.css" rel="stylesheet" type="text/css"
+        id="app-default-stylesheet" />
 
     <link href="/layout/assets/css/config/purple/bootstrap-dark.min.css" rel="stylesheet" type="text/css"
         id="bs-dark-stylesheet" />
@@ -44,7 +47,7 @@
                     <li class="d-none d-lg-block">
                         <form class="app-search">
                             <div class="app-search-box dropdown">
-                                
+
                             </div>
                         </form>
                     </li>
@@ -70,14 +73,13 @@
                         </a>
                     </li>
 
-
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                             data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                             aria-expanded="false">
-                      
+
                             <span class="pro-user-name ms-1">
-                                {{Auth::user()->name}} <i class="mdi mdi-chevron-down"></i>
+                                {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -89,7 +91,7 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="{{ route('logout') }}" class="dropdown-item notify-item" 
+                            <a href="{{ route('logout') }}" class="dropdown-item notify-item"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 <i class="fe-log-out"></i>
@@ -101,8 +103,6 @@
 
                         </div>
                     </li>
-
-                    
 
                 </ul>
 
@@ -149,8 +149,6 @@
                         <!-- End mobile menu toggle-->
                     </li>
 
-
-                    
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -164,10 +162,10 @@
 
                 <!-- User box -->
                 <div class="user-box text-center">
-                    
+
                     <div class="dropdown">
                         <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                            data-bs-toggle="dropdown">{{Auth::user()->name}}</a>
+                            data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->
@@ -191,10 +189,10 @@
                         <li>
                             <a href="#sidebarDashboards" data-bs-toggle="collapse">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
-                                
+
                                 <span> Dashboard </span>
                             </a>
-                            
+
                         </li>
 
                         <li class="menu-title mt-2">Bookings</li>
@@ -207,18 +205,18 @@
                             <div class="collapse" id="bookings">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.requested')}}">REQUESTED</a>
+                                        <a href="{{ route('admin.requested') }}">REQUESTED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('bikes.confirmed')}}">CONFIRMED</a>
+                                        <a href="{{ route('bikes.confirmed') }}">CONFIRMED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('bikes.cancelled')}}">CANCELLED</a>
+                                        <a href="{{ route('bikes.cancelled') }}">CANCELLED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.allBookings')}}">ALL</a>
+                                        <a href="{{ route('admin.allBookings') }}">ALL</a>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                         </li>
@@ -233,15 +231,14 @@
                             <div class="collapse" id="brands">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allBrands')}}">ALL</a>
+                                        <a href="{{ route('admin.allBrands') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addBrand')}}">ADD</a>
+                                        <a href="{{ route('admin.addBrand') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-
 
                         <li class="menu-title mt-2">Bikes</li>
 
@@ -254,19 +251,19 @@
 
                         <li>
                             <a href="#bikes" data-bs-toggle="collapse">
-                                
+
                                 <i data-feather="aperture" class="icon-dual"></i>
                                 <span> bikes </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="bikes">
                                 <ul class="nav-second-level">
-                                    
+
                                     <li>
-                                        <a href="{{route('admin.bikes')}}">ALL</a>
+                                        <a href="{{ route('admin.bikes') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addBike')}}">ADD</a>
+                                        <a href="{{ route('admin.addBike') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
@@ -283,10 +280,10 @@
                             <div class="collapse" id="mechanics">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allMech')}}">ALL</a>
+                                        <a href="{{ route('admin.allMech') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addMech')}}">ADD</a>
+                                        <a href="{{ route('admin.addMech') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
@@ -303,7 +300,7 @@
                             <div class="collapse" id="reviews">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allReviews')}}">ALL</a>
+                                        <a href="{{ route('admin.allReviews') }}">ALL</a>
                                     </li>
                                 </ul>
                             </div>
@@ -320,7 +317,7 @@
                             <div class="collapse" id="users">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allUsers')}}">ALL</a>
+                                        <a href="{{ route('admin.allUsers') }}">ALL</a>
                                     </li>
                                 </ul>
                             </div>
@@ -341,7 +338,6 @@
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
-
 
         <div class="content-page">
             <div class="content">
@@ -366,12 +362,12 @@
                     </div>
                     <!-- end page title -->
 
-
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="{{route('admin.addBrand')}}" type="button" class="btn btn-sm btn-blue waves-effect waves-light float-end">
+                                    <a href="{{ route('admin.addBrand') }}" type="button"
+                                        class="btn btn-sm btn-blue waves-effect waves-light float-end">
                                         <i class="mdi mdi-plus-circle"></i> Add Brand
                                     </a>
                                     <h4 class="header-title mb-4">Manage Brands</h4>
@@ -381,33 +377,41 @@
                                         </div>
                                     @endif
                                     <div class="table-responsive">
-                                        <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100" id="tickets-table">
+                                        <table class="table table-hover m-0 table-centered dt-responsive nowrap w-100"
+                                            id="tickets-table">
                                             <thead>
-                                            <tr>
-                                                <th>
-                                                    #
-                                                </th>
-                                                <th>Name</th>
-                                                <th class="hidden-sm">Action</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>
+                                                        #
+                                                    </th>
+                                                    <th>Name</th>
+                                                    <th class="hidden-sm">Action</th>
+                                                </tr>
                                             </thead>
-    
+
                                             <tbody>
-                                            @foreach($brands as $brand)
-                                            <tr>
-                                                <td>{{$count++}}</td> 
-                                                <td>{{$brand->name}}</td> 
-                                                <td>
-                                                    <div class="btn-group dropdown">
-                                                        <a href="javascript: void(0);" class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
-                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                            <a class="dropdown-item" href={{route('admin.singleBrand',['brand'=>$brand->id])}}><i class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit</a>
-                                                            <a class="dropdown-item" href="{{route('admin.removeBrand',['brand'=>$brand->id])}}"><i class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
+                                                @foreach ($brands as $brand)
+                                                    <tr>
+                                                        <td>{{ $count++ }}</td>
+                                                        <td>{{ $brand->name }}</td>
+                                                        <td>
+                                                            <div class="btn-group dropdown">
+                                                                <a href="javascript: void(0);"
+                                                                    class="table-action-btn dropdown-toggle arrow-none btn btn-light btn-sm"
+                                                                    data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                                        class="mdi mdi-dots-horizontal"></i></a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <a class="dropdown-item"
+                                                                        href={{ route('admin.singleBrand', ['brand' => $brand->id]) }}><i
+                                                                            class="mdi mdi-pencil me-2 text-muted font-18 vertical-middle"></i>Edit</a>
+                                                                    <a class="dropdown-item"
+                                                                        href="{{ route('admin.removeBrand', ['brand' => $brand->id]) }}"><i
+                                                                            class="mdi mdi-delete me-2 text-muted font-18 vertical-middle"></i>Remove</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -425,13 +429,14 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            <script>document.write(new Date().getFullYear())</script> &copy; Bike Rental and Servicing <a
-                                href="#"></a>
+                            <script>
+                                document.write(new Date().getFullYear())
+                            </script> &copy; Bike Rental and Servicing <a href="#"></a>
                         </div>
                         <div class="col-md-6">
                             <div class="text-md-end footer-links d-none d-sm-block">
                                 <a href="javascript:void(0);">About Us</a>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -445,12 +450,10 @@
         <!-- End Page content -->
         <!-- ============================================================== -->
 
-
     </div>
     <!-- END wrapper -->
 
     <div class="rightbar-overlay"></div>
-
 
     <!-- Vendor js -->
     <script src="/layout/assets/js/vendor.min.js"></script>

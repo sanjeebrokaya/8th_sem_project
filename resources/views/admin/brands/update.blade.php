@@ -52,8 +52,9 @@
                     </li>
 
                     <li class="dropdown d-inline-block d-lg-none">
-                        <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-bs-toggle="dropdown"
-                            href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light"
+                            data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                            aria-expanded="false">
                             <i class="fe-search noti-icon"></i>
                         </a>
                         <div class="dropdown-menu dropdown-lg dropdown-menu-end p-0">
@@ -71,14 +72,13 @@
                         </a>
                     </li>
 
-
                     <li class="dropdown notification-list topbar-dropdown">
                         <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light"
                             data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                             aria-expanded="false">
 
                             <span class="pro-user-name ms-1">
-                                {{Auth::user()->name}} <i class="mdi mdi-chevron-down"></i>
+                                {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -90,20 +90,18 @@
                             <div class="dropdown-divider"></div>
 
                             <!-- item-->
-                            <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}" class="dropdown-item notify-item"
+                                onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 <i class="fe-log-out"></i>
                                 <span>Logout</span>
                             </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
 
                         </div>
                     </li>
-
-
 
                 </ul>
 
@@ -150,8 +148,6 @@
                         <!-- End mobile menu toggle-->
                     </li>
 
-
-
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -168,7 +164,7 @@
 
                     <div class="dropdown">
                         <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
-                            data-bs-toggle="dropdown">{{Auth::user()->name}}</a>
+                            data-bs-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <div class="dropdown-menu user-pro-dropdown">
 
                             <!-- item-->
@@ -192,10 +188,10 @@
                         <li>
                             <a href="#sidebarDashboards" data-bs-toggle="collapse">
                                 <i class="mdi mdi-view-dashboard-outline"></i>
-                                
+
                                 <span> Dashboard </span>
                             </a>
-                            
+
                         </li>
 
                         <li class="menu-title mt-2">Bookings</li>
@@ -208,18 +204,18 @@
                             <div class="collapse" id="bookings">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.requested')}}">REQUESTED</a>
+                                        <a href="{{ route('admin.requested') }}">REQUESTED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('bikes.confirmed')}}">CONFIRMED</a>
+                                        <a href="{{ route('bikes.confirmed') }}">CONFIRMED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('bikes.cancelled')}}">CANCELLED</a>
+                                        <a href="{{ route('bikes.cancelled') }}">CANCELLED</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.allBookings')}}">ALL</a>
+                                        <a href="{{ route('admin.allBookings') }}">ALL</a>
                                     </li>
-                                    
+
                                 </ul>
                             </div>
                         </li>
@@ -234,15 +230,14 @@
                             <div class="collapse" id="brands">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allBrands')}}">ALL</a>
+                                        <a href="{{ route('admin.allBrands') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addBrand')}}">ADD</a>
+                                        <a href="{{ route('admin.addBrand') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-
 
                         <li class="menu-title mt-2">Bikes</li>
 
@@ -255,19 +250,19 @@
 
                         <li>
                             <a href="#bikes" data-bs-toggle="collapse">
-                                
+
                                 <i data-feather="aperture" class="icon-dual"></i>
                                 <span> bikes </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <div class="collapse" id="bikes">
                                 <ul class="nav-second-level">
-                                    
+
                                     <li>
-                                        <a href="{{route('admin.bikes')}}">ALL</a>
+                                        <a href="{{ route('admin.bikes') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addBike')}}">ADD</a>
+                                        <a href="{{ route('admin.addBike') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
@@ -284,10 +279,10 @@
                             <div class="collapse" id="mechanics">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allMech')}}">ALL</a>
+                                        <a href="{{ route('admin.allMech') }}">ALL</a>
                                     </li>
                                     <li>
-                                        <a href="{{route('admin.addMech')}}">ADD</a>
+                                        <a href="{{ route('admin.addMech') }}">ADD</a>
                                     </li>
                                 </ul>
                             </div>
@@ -304,7 +299,7 @@
                             <div class="collapse" id="reviews">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allReviews')}}">ALL</a>
+                                        <a href="{{ route('admin.allReviews') }}">ALL</a>
                                     </li>
                                 </ul>
                             </div>
@@ -321,7 +316,7 @@
                             <div class="collapse" id="users">
                                 <ul class="nav-second-level">
                                     <li>
-                                        <a href="{{route('admin.allUsers')}}">ALL</a>
+                                        <a href="{{ route('admin.allUsers') }}">ALL</a>
                                     </li>
                                 </ul>
                             </div>
@@ -342,7 +337,6 @@
         <!-- ============================================================== -->
         <!-- Start Page Content here -->
         <!-- ============================================================== -->
-
 
         <div class="content-page">
             <div class="content">
@@ -381,7 +375,8 @@
 
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <form id="bikes" method="POST" action="{{route('admin.updateBrand',['brand'=>$brand->id])}}">
+                                                <form id="bikes" method="POST"
+                                                    action="{{ route('admin.updateBrand', ['brand' => $brand->id]) }}">
 
                                                     @csrf
 
@@ -399,15 +394,15 @@
                                                     <div class="mb-3">
                                                         <label for="brandname" class="form-label">name</label>
                                                         <input name="brandname" type="text" id="brandname"
-                                                            class="form-control" value="{{$brand->name}}">
-                                                    </div>  
+                                                            class="form-control" value="{{ $brand->name }}">
+                                                    </div>
 
-                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">Update Brand</button>
+                                                    <button type="submit"
+                                                        class="btn btn-primary waves-effect waves-light">Update
+                                                        Brand</button>
                                                 </form>
                                             </div>
                                         </div>
-
-
 
                                     </div> <!-- end card-body-->
                                 </div> <!-- end card-->
@@ -445,7 +440,6 @@
         <!-- End Page content -->
         <!-- ============================================================== -->
 
-
     </div>
     <!-- END wrapper -->
 
@@ -455,9 +449,7 @@
     <!-- App js -->
     <script src="/layout/assets/js/app.min.js"></script>
 
-    <script>
-        
-    </script>
+    <script></script>
 
 </body>
 
