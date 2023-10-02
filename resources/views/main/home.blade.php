@@ -900,7 +900,7 @@
             <div class="row">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="x_footer_top_left float_left">
-                        {{-- <img src="images/footer_logo.png" alt="logo"> --}}
+                       <img src="images/footer_logo.png" alt="logo">
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">

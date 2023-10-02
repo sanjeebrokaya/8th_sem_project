@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManager as Image;
+use Intervention\Image\ImageManagerStatic;
 
 class AdminController extends Controller
 {
