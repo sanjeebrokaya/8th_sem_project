@@ -865,26 +865,31 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="wrap-album-slider">
+                    <div class="wrap-album-slider brand-slider">
                         <ul class="album-slider">
                             <li class="album-slider__item">
                                 <figure class="album">
-                                    <img src="/images/prt1.png" alt="img">
+                                    <img src="/images/honda.png" alt="img">
                                 </figure>
                             </li>
                             <li class="album-slider__item">
                                 <figure class="album">
-                                    <img src="/images/prt1.png" alt="img">
+                                    <img src="/images/suzuki.png" alt="img">
                                 </figure>
                             </li>
                             <li class="album-slider__item">
                                 <figure class="album">
-                                    <img src="/images/prt1.png" alt="img">
+                                    <img src="/images/yamaha.png" alt="img">
                                 </figure>
                             </li>
                             <li class="album-slider__item">
                                 <figure class="album">
-                                    <img src="/images/prt1.png" alt="img">
+                                    <img src="/images/trek.jpg" alt="img">
+                                </figure>
+                            </li>
+                            <li class="album-slider__item">
+                                <figure class="album">
+                                    <img src="/images/ktm.jpg" alt="img">
                                 </figure>
                             </li>
 
