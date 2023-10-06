@@ -360,7 +360,7 @@
                                         <li class="breadcrumb-item active">All</li>
                                     </ol>
                                 </div>
-                                <h4 class="page-title">All Reviews</h4>
+                                <h4 class="page-title">Users</h4>
                             </div>
                         </div>
                     </div>
@@ -373,7 +373,7 @@
                                 <div class="card-body">
                                     <a href="#" type="button" class="btn btn-sm btn-blue waves-effect waves-light float-end">
                                     </a>
-                                    <h4 class="header-title mb-4">Manage Reviews</h4>
+                                    <h4 class="header-title mb-4">Manage Users</h4>
                                     @if (session('error'))
                                         <div class="alert alert-danger">
                                             {{ session('error') }}
