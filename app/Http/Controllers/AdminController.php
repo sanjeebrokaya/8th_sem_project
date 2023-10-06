@@ -534,8 +534,10 @@ class AdminController extends Controller
         $user_id = Mechanic::where('id', '=', $mechanic->id)->value('user_id');
 
         if ($findMech) {
+            Booking::where('user_id',$mechanic->id)->delete();
+            Appointment::where('mechanic_id',$mechanic->id)->delete();
             Mechanic::where('id', '=', $mechanic->id)->delete();
-            User::where('id', '=', $user_id)->delete();
+            // User::where('id', '=', $user_id)->delete();
             return redirect()->route('admin.allMech');
         }
         return back()->with('error', 'Mechanic Not Found');

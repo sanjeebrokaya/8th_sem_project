@@ -29,7 +29,7 @@ class MechanicsController extends Controller
     }
 
     function mechanicsAll(){
-        $mechanics = Mechanic::paginate(2);
+        $mechanics = Mechanic::paginate(4);
         $count = $mechanics->count();
         $all = Mechanic::all()->count();
 

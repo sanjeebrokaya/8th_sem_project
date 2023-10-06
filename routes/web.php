@@ -26,7 +26,7 @@ Route::get('/', function () {
     if (Auth::check()) {
         if (Auth::user()->user_type == 'user') {
             $bikes = Bike::all()->random(4);
-            $mechanics = Mechanic::all()->random(2);
+            $mechanics = Mechanic::all()->random(4);
             return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
         }
         if (Auth::user()->user_type == 'admin') {
@@ -39,7 +39,7 @@ Route::get('/', function () {
     } else {
         try {
             $bikes = Bike::all()->random(4) ?? null;
-            $mechanics = Mechanic::all()->random(2) ?? null;
+            $mechanics = Mechanic::all()->random(4) ?? null;
 
             return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
         } catch (Exception $e) {

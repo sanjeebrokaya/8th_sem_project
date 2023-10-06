@@ -397,7 +397,7 @@
                                             @foreach($reviews as $review)
                                             <tr>
                                                 <td>{{$count++}}</td> 
-                                                <td>{{$review->bike->name}}</td> 
+                                                <td>{{DB::table('bikes')->where('id',$review->bike_id)->value('name')}}</td> 
                                                 <td>{{$review->user->name}}</td> 
                                                 <td>{{$review->review}}</td>
                                                 <td>

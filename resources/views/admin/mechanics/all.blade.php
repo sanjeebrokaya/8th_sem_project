@@ -371,7 +371,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <a href="#" type="button" class="btn btn-sm btn-blue waves-effect waves-light float-end">
+                                    <a href="{{route('admin.addMech')}}" type="button" class="btn btn-sm btn-blue waves-effect waves-light float-end">
                                         <i class="mdi mdi-plus-circle"></i> Add Mechanic
                                     </a>
                                     <h4 class="header-title mb-4">Manage Bikes</h4>
