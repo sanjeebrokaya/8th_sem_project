@@ -32,7 +32,7 @@
         <div class="container">
             <div class="x_title_inner_num_wrapper float_left">
                 <div class="x_title_num_heading">
-                    <h3>Choose a car</h3>
+                    <h3>Bike Booking</h3>
                     <p>Complete Your Step</p>
                 </div>
                 <div class="x_title_num_heading_cont">
@@ -46,7 +46,7 @@
                         <div class="x_icon_num ">
                             <p>2</p>
                         </div>
-                        <h5>Car</h5>
+                        <h5>Bike</h5>
                     </div>
                     <div class="x_title_num_main_box_wrapper">
                         <div class="x_icon_num">
@@ -72,7 +72,7 @@
         </div>
     </div>
     <!-- x tittle num Wrapper End -->
-    <!-- x car book sidebar section Wrapper Start -->
+    <!-- x bike book sidebar section Wrapper Start -->
     <div class="x_car_book_sider_main_Wrapper float_left">
         <div class="container">
             <div class="row">
@@ -86,7 +86,7 @@
                                     <hr>
                                     <!-- Resources -->
                                     <div class="x_car_access_filer_top_img">
-                                        <img src="/storage/bikes/{{ $bike->thumbnail }}" alt="img">
+                                        <img src="/storage/bikes/{{ $bike->thumbnail }}" alt="img" style="width:100%;">
                                         <h3>{{ $bike->name }}</h3>
                                         <p>Rs {{ $booking->total }} ({{ $booking->days }} Day)</p>
                                     </div>
