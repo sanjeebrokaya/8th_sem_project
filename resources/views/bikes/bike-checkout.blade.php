@@ -222,7 +222,7 @@
 
 
             $.ajax({
-                url: "/bike/rent-done/{{ $booking->id }}",
+                url: "http://127.0.0.1:8000/bike/rent-done/{{$booking->id}}",
                 type: "POST",
                 dataType: 'JSON',
                 data: formdata,

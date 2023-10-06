@@ -30,7 +30,7 @@ class BikeRentController extends Controller
 
     function bikeAll()
     {
-        $bikes = Bike::paginate(2);
+        $bikes = Bike::paginate(10);
         $count = $bikes->count();
         $brands = Brand::all();
         $all = Bike::all()->count();
@@ -43,7 +43,7 @@ class BikeRentController extends Controller
         $reviews = Review::where('bike_id', '=', $bike->id)->get();
         $latestBikes = Bike::where('id', '!=', $bike->id)->limit(3)->get();
 
-        return view('bikes.bike-single', ['bike' => $bike, 'reviews' => $reviews, 'latestBikes' => $latestBikes]);
+        return view('bikes.bike-single', ['bike' => $bike, 'reviews' => $reviews, 'latestBikes' => $latestBikes, 'bikeId' => $bike->id]);
     }
 
     function rentNow(Bike $bike, Request $request)

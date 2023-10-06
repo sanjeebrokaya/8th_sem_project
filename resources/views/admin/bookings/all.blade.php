@@ -481,7 +481,7 @@
                                             @foreach($bookings as $booking)
                                             <tr>
                                                 <td>{{$count++}}</td> 
-                                                <td>{{$booking->bike->name}}</td> 
+                                                <td>{{DB::table('bikes')->where('id', $booking->bike_id)->value('name')}}</td> 
                                                 <td>{{$booking->user->name}}</td> 
                                                 <td>{{$booking->fromDate}}</td> 
                                                 <td>{{$booking->toDate}}</td> 

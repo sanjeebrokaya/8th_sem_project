@@ -129,7 +129,7 @@
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="x_carbook_right_tabs_box_wrapper float_left">
-                                    <ul class="nav nav-tabs">
+                                    <ul class="nav nav-tabs" style="display: none;">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-toggle="tab" href="#home"> <i
                                                     class="flaticon-menu"></i>

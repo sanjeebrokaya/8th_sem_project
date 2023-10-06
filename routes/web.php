@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     if (Auth::check()) {
         if (Auth::user()->user_type == 'user') {
-            $bikes = Bike::all()->random(2);
+            $bikes = Bike::all()->random(4);
             $mechanics = Mechanic::all()->random(2);
             return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
         }
@@ -38,7 +38,7 @@ Route::get('/', function () {
         }
     } else {
         try {
-            $bikes = Bike::all()->random(2) ?? null;
+            $bikes = Bike::all()->random(4) ?? null;
             $mechanics = Mechanic::all()->random(2) ?? null;
 
             return view('main.home', ['bikes' => $bikes, 'mechanics' => $mechanics]);
@@ -61,8 +61,11 @@ Route::get('/bike/details/{bike:id}', [BikeRentController::class, 'bikeSingle'])
 Route::get('/rent-now/{bike:id}', [BikeRentController::class, 'index'])->middleware('auth')->name('bike.rentnow');
 Route::post('/rent-now/{bike:id}/bike', [BikeRentController::class, 'rentNow'])->middleware(['auth'])->name('bike.rent');
 Route::get('/bike/rent/{bike:id}/done/{user}', [BikeRentController::class, 'rentDone'])->middleware(['auth'])->name('bike.rentDone');
+// Route::match(['get', 'post'], '/bike/rent/{bike:id}/done/{user}', [BikeRentController::class, 'rentDone'])->middleware(['auth'])->name('bike.rentDone');
+
 
 Route::post('/bike/rent-done/{booking:id}', [BikeRentController::class, 'rentUpdate'])->middleware(['auth'])->name('bike.rentUpdate');
+// Route::match(['get', 'post'], '/bike/rent-done/{booking:id}', [BikeRentController::class, 'rentUpdate'])->middleware(['auth'])->name('bike.rentUpdate');
 Route::post('/khalticonfirm', [KhaltiController::class, 'confirmKhalti'])->middleware(['auth'])->name('confirmKhalti');
 
 Route::get('/bike/rent-done/{booking:id}', [BikeRentController::class, 'showBooking'])->middleware(['auth'])->name('bike.showRent');

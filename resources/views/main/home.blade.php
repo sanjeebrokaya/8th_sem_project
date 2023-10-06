@@ -872,6 +872,21 @@
                                     <img src="/images/prt1.png" alt="img">
                                 </figure>
                             </li>
+                            <li class="album-slider__item">
+                                <figure class="album">
+                                    <img src="/images/prt1.png" alt="img">
+                                </figure>
+                            </li>
+                            <li class="album-slider__item">
+                                <figure class="album">
+                                    <img src="/images/prt1.png" alt="img">
+                                </figure>
+                            </li>
+                            <li class="album-slider__item">
+                                <figure class="album">
+                                    <img src="/images/prt1.png" alt="img">
+                                </figure>
+                            </li>
 
                         </ul>
                     </div>

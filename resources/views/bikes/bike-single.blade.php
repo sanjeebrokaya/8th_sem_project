@@ -366,7 +366,7 @@
                                 </div>
                                 <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
                                     <div class="owl-carousel owl-theme">
-                                        @forelse($latestBikes as $bike)
+                                        @forelse($latestBikes as $bik)
                                             <div class="item">
                                                 <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
                                                     <div class="x_car_offer_starts float_left">
@@ -378,14 +378,14 @@
                                                     </div>
                                                     <div class="x_car_offer_price float_left">
                                                         <div class="x_car_offer_price_inner">
-                                                            <h3>Rs {{ $bike->priceperday }}</h3>
+                                                            <h3>Rs {{ $bik->priceperday }}</h3>
                                                             <p><span>Per</span>
                                                                 <br> day
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{ $bike->name }}</a></h2>
+                                                        <h2><a href="#">{{ $bik->name }}</a></h2>
                                                         <p>New Best</p>
                                                     </div>
 
@@ -393,7 +393,7 @@
                                                         <ul>
 
                                                             <li><a
-                                                                    href="{{ route('bike.details', ['bike' => $bike->id]) }}">Details</a>
+                                                                    href="{{ route('bike.details', ['bike' => $bik->id]) }}">Details</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -815,7 +815,7 @@
 
         function submitForm(formData) {
             $.ajax({
-                url: "{{ route('bike.rent', ['bike' => $bike->id]) }}",
+                url: "{{ route('bike.rent', ['bike' => $bikeId]) }}",
                 method: "POST",
                 data: formData,
                 dataType: "JSON",
