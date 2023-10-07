@@ -366,26 +366,26 @@
                                 </div>
                                 <div class="btc_ln_slider_wrapper btc_ln_slider_wrapper_cs">
                                     <div class="owl-carousel owl-theme">
-                                        @forelse($latestBikes as $bik)
+                                        @forelse($latestBikes as $b)
                                             <div class="item">
                                                 <div class="x_car_offer_main_boxes_wrapper float_left margintop_zero">
                                                     <div class="x_car_offer_starts float_left">
 
                                                     </div>
                                                     <div class="x_car_offer_img float_left">
-                                                        <img src="/storage/bikes/{{ $bike->thumbnail }}"
+                                                        <img src="/storage/bikes/{{ $b->thumbnail }}"
                                                             alt="img">
                                                     </div>
                                                     <div class="x_car_offer_price float_left">
                                                         <div class="x_car_offer_price_inner">
-                                                            <h3>Rs {{ $bik->priceperday }}</h3>
+                                                            <h3>Rs {{ $b->priceperday }}</h3>
                                                             <p><span>Per</span>
                                                                 <br> day
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="x_car_offer_heading float_left">
-                                                        <h2><a href="#">{{ $bik->name }}</a></h2>
+                                                        <h2><a href="#">{{ $b->name }}</a></h2>
                                                         <p>New Best</p>
                                                     </div>
 
@@ -393,7 +393,7 @@
                                                         <ul>
 
                                                             <li><a
-                                                                    href="{{ route('bike.details', ['bike' => $bik->id]) }}">Details</a>
+                                                                    href="{{ route('bike.details', ['bike' => $b->id]) }}">Details</a>
                                                             </li>
                                                         </ul>
                                                     </div>

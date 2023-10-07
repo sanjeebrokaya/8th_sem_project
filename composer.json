@@ -19,7 +19,7 @@
         "pusher/pusher-php-server": "^7.0"
     },
     "require-dev": {
-        "andyabih/laravel-to-uml": "*",
+        "andyabih/laravel-to-uml": "^1.0",
         "barryvdh/laravel-debugbar": "^3.7",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
